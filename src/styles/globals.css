@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gold: #B8975A;
+    --gold-light: #D4A84B;
+    --dark: #1C1C1A;
+    --cream: #FAFAF8;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream-50 text-dark-800 font-sans;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  h1 { @apply text-2xl font-medium text-dark-800; }
+  h2 { @apply text-xl font-medium text-dark-800; }
+  h3 { @apply text-lg font-medium text-dark-800; }
+  h4 { @apply text-base font-medium text-dark-800; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select {
+    @apply w-full rounded-lg border border-dark-200 bg-white px-3 py-2.5
+           text-sm text-dark-800 placeholder-dark-300
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-transparent
+           disabled:bg-dark-50 disabled:text-dark-400 disabled:cursor-not-allowed
+           transition-colors duration-150;
+  }
+
+  select {
+    @apply appearance-none cursor-pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+}
+
+@layer components {
+
+  /* ── Buttons ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5
+           text-sm font-medium transition-all duration-150
+           focus:outline-none focus:ring-2 focus:ring-offset-1
+           disabled:opacity-50 disabled:cursor-not-allowed
+           active:scale-[0.98];
+  }
+
+  .btn-primary {
+    @apply btn bg-gold-500 text-white hover:bg-gold-600
+           focus:ring-gold-500 shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-dark-700 border border-dark-200
+           hover:bg-dark-50 focus:ring-dark-300;
+  }
+
+  .btn-danger {
+    @apply btn bg-red-500 text-white hover:bg-red-600 focus:ring-red-500;
+  }
+
+  .btn-ghost {
+    @apply btn text-dark-600 hover:bg-dark-100 hover:text-dark-800 focus:ring-dark-300;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white rounded-xl border border-dark-100 shadow-card;
+  }
+
+  .card-hover {
+    @apply card transition-shadow duration-200 hover:shadow-card-hover cursor-pointer;
+  }
+
+  /* ── Form elements ── */
+  .form-label {
+    @apply block text-xs font-medium text-dark-500 mb-1.5 uppercase tracking-wide;
+  }
+
+  .form-error {
+    @apply text-xs text-red-500 mt-1;
+  }
+
+  .form-hint {
+    @apply text-xs text-dark-400 mt-1;
+  }
+
+  .form-group {
+    @apply space-y-1;
+  }
+
+  /* ── Badges ── */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .badge-gold {
+    @apply badge bg-gold-50 text-gold-700 border border-gold-200;
+  }
+
+  .badge-green {
+    @apply badge bg-green-50 text-green-700 border border-green-200;
+  }
+
+  .badge-amber {
+    @apply badge bg-amber-50 text-amber-700 border border-amber-200;
+  }
+
+  .badge-red {
+    @apply badge bg-red-50 text-red-600 border border-red-200;
+  }
+
+  .badge-gray {
+    @apply badge bg-dark-50 text-dark-500 border border-dark-200;
+  }
+
+  .badge-blue {
+    @apply badge bg-blue-50 text-blue-700 border border-blue-200;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium
+           text-dark-500 hover:text-dark-800 hover:bg-dark-100
+           transition-colors duration-150;
+  }
+
+  .sidebar-link-active {
+    @apply sidebar-link bg-gold-50 text-gold-700 hover:bg-gold-100 hover:text-gold-700;
+  }
+
+  /* ── Tables ── */
+  .table-container {
+    @apply overflow-x-auto rounded-xl border border-dark-100;
+  }
+
+  .table {
+    @apply w-full text-sm;
+  }
+
+  .table th {
+    @apply bg-dark-50 px-4 py-3 text-left text-xs font-medium text-dark-500
+           uppercase tracking-wide border-b border-dark-100;
+  }
+
+  .table td {
+    @apply px-4 py-3.5 text-dark-700 border-b border-dark-50;
+  }
+
+  .table tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .table tr:hover td {
+    @apply bg-cream-50;
+  }
+
+  /* ── Section headers ── */
+  .section-header {
+    @apply flex items-center justify-between mb-6;
+  }
+
+  .page-title {
+    @apply text-xl font-medium text-dark-800;
+  }
+
+  .page-subtitle {
+    @apply text-sm text-dark-400 mt-0.5;
+  }
+
+  /* ── Gold accent ── */
+  .gold-rule {
+    @apply w-10 h-0.5 bg-gold-500 rounded-full;
+  }
+
+  /* ── Loading skeleton ── */
+  .skeleton {
+    @apply bg-dark-100 rounded animate-pulse;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    @apply border-t border-dark-100 my-6;
+  }
+
+  /* ── Empty state ── */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-16 px-8 text-center;
+  }
+
+  .empty-state-icon {
+    @apply w-12 h-12 text-dark-300 mb-4;
+  }
+
+  .empty-state-title {
+    @apply text-base font-medium text-dark-600 mb-1;
+  }
+
+  .empty-state-text {
+    @apply text-sm text-dark-400;
+  }
+
+  /* ── Waiver callout banner ── */
+  .waiver-banner {
+    @apply flex items-center gap-3 rounded-xl border-2 border-gold-400
+           bg-gold-50 px-5 py-4;
+  }
+
+  .waiver-banner-icon {
+    @apply w-8 h-8 text-gold-500 shrink-0;
+  }
+
+  /* ── Step indicator ── */
+  .step-indicator {
+    @apply flex items-center gap-2 text-xs font-medium;
+  }
+
+  .step-dot {
+    @apply w-6 h-6 rounded-full flex items-center justify-center text-xs font-medium;
+  }
+
+  .step-dot-active {
+    @apply step-dot bg-gold-500 text-white;
+  }
+
+  .step-dot-complete {
+    @apply step-dot bg-green-500 text-white;
+  }
+
+  .step-dot-pending {
+    @apply step-dot bg-dark-100 text-dark-400;
+  }
+
+  .step-line {
+    @apply flex-1 h-px bg-dark-200;
+  }
+
+  .step-line-complete {
+    @apply step-line bg-green-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #D1CFCC transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #D1CFCC;
+    border-radius: 2px;
+  }
+}
