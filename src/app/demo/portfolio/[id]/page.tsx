@@ -173,7 +173,7 @@ export default function PropertyDetail({ params }: { params: { id: string } }) {
       </div>
 
       {/* Actions */}
-      <div style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}>
+      <div style={{ display: 'flex', gap: '10px', marginBottom: '80px' }}>
         <Link href="/demo/vault" style={{
           flex: 1, textAlign: 'center', textDecoration: 'none',
           background: 'var(--ac)', color: '#0B0B0A',
